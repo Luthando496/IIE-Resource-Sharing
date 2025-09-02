@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #2563EB;      /* Trustworthy blue */
+  --primary-dark: #1D4ED8; /* Darker blue for hover states */
+  --secondary: #0EA5E9;    /* Keeping your brand blue for accents */
+  --accent: #F59E0B;       /* Energetic amber for CTAs */
+  --accent-hover: #D97706; /* Darker amber for hover */
+  --text-primary: #1E293B; /* Dark blue for text - better readability */
+  --text-secondary: #475569; /* Lighter blue-gray for secondary text */
+  --bg-primary: #F8FAFC;   /* Light background for reduced eye strain */
+  --bg-secondary: #E2E8F0; /* Light gray for secondary backgrounds */
+  --card-bg: #FFFFFF;      /* White cards for content separation */
+  --success: #10B981;      /* Positive green */
+  --error: #EF4444;        /* Alert red */
+}
+
+.bg-primary {
+  background-color: var(--bg-primary);
+}
+
+.bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.primary-text {
+  color: var(--text-primary);
+}
+
+.secondary-text {
+  color: var(--text-secondary);
+}
+
+.primary-text-hover:hover {
+  color: var(--primary-dark);
+}
+
+.card-bg {
+  background-color: var(--card-bg);
+}
+
+.bg-btn {
+  background-color: var(--accent);
+}
+
+.bg-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.header_img {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.pexels.com/photos/12610210/pexels-photo-12610210.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+}
