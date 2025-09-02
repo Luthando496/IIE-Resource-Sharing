@@ -1,7 +1,10 @@
 "use client";
 import { Book, Upload, Search, Users, Menu, X, ChevronRight } from 'lucide-react'; // Using Lucide for icons
-
 import { ContentCardProps } from "./page";
+import { useUserStore } from '@/store/store';
+
+  const {isLoggedIn} = useUserStore(state => state)
+  export const userLoggedIn = isLoggedIn;
 
 const ContentCard = ({ title, description, link, image, icon, category }: ContentCardProps) => (
   
