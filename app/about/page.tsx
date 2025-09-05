@@ -37,14 +37,11 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-primary">
-      {/* Header - Reuse your existing header */}
-      
-
       {/* Hero Section */}
-      <section className="header_img bg-cover bg-center min-h-[50vh] flex items-center" style={{backgroundImage: "url('https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"}}>
+      <section className="header_img bg-cover bg-center min-h-[50vh] flex items-center">
         <div className="px-4 mx-auto max-w-7xl text-center py-20">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold primary-text mb-6">About Resource Hub</h1>
-          <p className="text-lg md:text-xl lg:text-2xl primary-text mb-8">Empowering students through shared knowledge and collaboration</p>
+          <p className="text-lg md:text-xl lg:text-2xl secondary-text mb-8">Empowering students through shared knowledge and collaboration</p>
         </div>
       </section>
 
@@ -60,9 +57,9 @@ export default function AboutPage() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="card-bg p-6 rounded-lg shadow-lg text-center">
+            <div className="card-bg p-6 rounded-lg shadow-lg text-center border border-primary">
               <div className="flex justify-center mb-4">
-                <Target className="primary-text" size={40} />
+                <Target className="text-accent" size={40} />
               </div>
               <h3 className="text-xl font-semibold primary-text mb-2">Our Vision</h3>
               <p className="secondary-text">
@@ -71,9 +68,9 @@ export default function AboutPage() {
               </p>
             </div>
             
-            <div className="card-bg p-6 rounded-lg shadow-lg text-center">
+            <div className="card-bg p-6 rounded-lg shadow-lg text-center border border-primary">
               <div className="flex justify-center mb-4">
-                <Heart className="primary-text" size={40} />
+                <Heart className="text-accent" size={40} />
               </div>
               <h3 className="text-xl font-semibold primary-text mb-2">Our Values</h3>
               <p className="secondary-text">
@@ -82,9 +79,9 @@ export default function AboutPage() {
               </p>
             </div>
             
-            <div className="card-bg p-6 rounded-lg shadow-lg text-center">
+            <div className="card-bg p-6 rounded-lg shadow-lg text-center border border-primary">
               <div className="flex justify-center mb-4">
-                <Users className="primary-text" size={40} />
+                <Users className="text-accent" size={40} />
               </div>
               <h3 className="text-xl font-semibold primary-text mb-2">Our Community</h3>
               <p className="secondary-text">
@@ -102,8 +99,8 @@ export default function AboutPage() {
           <h2 className="text-3xl md:text-4xl font-bold primary-text text-center mb-12">By The Numbers</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
-              <div key={index} className="card-bg p-6 rounded-lg shadow-lg text-center">
-                <div className="flex justify-center mb-3 primary-text">
+              <div key={index} className="card-bg p-6 rounded-lg shadow-lg text-center border border-primary">
+                <div className="flex justify-center mb-3 text-accent">
                   {stat.icon}
                 </div>
                 <h3 className="text-3xl font-bold primary-text mb-1">{stat.value}</h3>
@@ -124,7 +121,7 @@ export default function AboutPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="card-bg rounded-lg shadow-lg overflow-hidden">
+              <div key={index} className="card-bg rounded-lg shadow-lg overflow-hidden border border-primary">
                 <div className="h-48 overflow-hidden">
                   <img 
                     src={member.image} 
@@ -151,18 +148,15 @@ export default function AboutPage() {
             Become part of a growing network of students helping each other succeed through shared knowledge and resources.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-btn hover:bg-amber-600 text-white font-semibold py-3 px-8 rounded-lg text-lg duration-500 cursor-pointer">
+            <button className="bg-btn font-semibold py-3 px-8 rounded-lg text-lg duration-300 cursor-pointer">
               Sign Up Now
             </button>
-            <button className="bg-primary hover:bg-[#334155] primary-text font-semibold py-3 px-8 rounded-lg text-lg duration-500 cursor-pointer border border-amber-500">
+            <button className="bg-btn-secondary font-semibold py-3 px-8 rounded-lg text-lg duration-300 cursor-pointer border border-primary">
               Learn More
             </button>
           </div>
         </div>
       </section>
-
-      {/* Footer - Reuse your existing footer */}
-      
     </div>
   );
 }

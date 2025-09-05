@@ -2,18 +2,6 @@
 import { useState, useRef } from 'react';
 import { Upload, FileText, File, X, AlertCircle, CheckCircle } from 'lucide-react';
 
-// Reuse your existing color palette
-const colors = {
-  mainBackground: '#2C2A3B',
-  secondaryBackground: '#3A374F',
-  primaryText: '#F8F5FB',
-  secondaryText: '#C7C3D4',
-  accentPrimary: '#D9456F',
-  accentAlternative: '#B5375A',
-  success: '#6BBF59',
-  error: '#D9534F',
-};
-
 export default function UploadPage() {
   const [file, setFile] = useState<File | null>(null);
   const [title, setTitle] = useState('');
@@ -77,35 +65,35 @@ export default function UploadPage() {
   };
 
   const getFileIcon = () => {
-    if (!file) return <FileText size={48} className={`text-[${colors.secondaryText}]`} />;
+    if (!file) return <FileText size={48} className="text-accent" />;
     
     if (file.type === 'application/pdf') {
-      return <FileText size={48} className={`text-[${colors.error}]`} />;
+      return <FileText size={48} className="text-accent" />;
     } else {
-      return <File size={48} className={`text-[${colors.accentPrimary}]`} />;
+      return <File size={48} className="text-accent" />;
     }
   };
 
   return (
-    <div className={`min-h-screen bg-[${colors.mainBackground}] text-[${colors.primaryText}] py-12`}>
+    <div className="min-h-screen bg-primary text-primary-text py-12">
       <div className="container mx-auto px-4 max-w-3xl">
-        <div className="bg-[${colors.secondaryBackground}] rounded-xl shadow-lg p-6 md:p-8">
-          <h1 className="text-3xl font-bold mb-2">Share Your Knowledge</h1>
-          <p className={`text-[${colors.secondaryText}] mb-8`}>
+        <div className="card-bg rounded-xl shadow-lg p-6 md:p-8 border border-primary">
+          <h1 className="text-3xl font-bold primary-text mb-2">Share Your Knowledge</h1>
+          <p className="secondary-text mb-8">
             Upload study materials, notes, or resources to help fellow students
           </p>
           
           {/* Upload Status Messages */}
           {uploadStatus === 'success' && (
-            <div className={`mb-6 p-4 rounded-lg bg-green-900/30 border border-green-700 flex items-center`}>
-              <CheckCircle className="text-green-500 mr-3" />
+            <div className="mb-6 p-4 rounded-lg bg-success/10 border border-success flex items-center">
+              <CheckCircle className="text-success mr-3" />
               <span>Your document has been uploaded successfully!</span>
             </div>
           )}
           
           {uploadStatus === 'error' && (
-            <div className={`mb-6 p-4 rounded-lg bg-red-900/30 border border-red-700 flex items-center`}>
-              <AlertCircle className="text-red-500 mr-3" />
+            <div className="mb-6 p-4 rounded-lg bg-error/10 border border-error flex items-center">
+              <AlertCircle className="text-error mr-3" />
               <span>There was an error uploading your document. Please try again.</span>
             </div>
           )}
@@ -113,7 +101,7 @@ export default function UploadPage() {
           <form onSubmit={handleSubmit}>
             {/* File Upload Area */}
             <div 
-              className={`border-2 border-dashed border-[${colors.secondaryText}] rounded-lg p-8 text-center mb-6 cursor-pointer hover:border-[${colors.accentPrimary}] transition-colors`}
+              className="border-2 border-dashed border-primary rounded-lg p-8 text-center mb-6 cursor-pointer hover:border-accent transition-colors"
               onClick={() => fileInputRef.current?.click()}
             >
               <input
@@ -127,8 +115,8 @@ export default function UploadPage() {
               {file ? (
                 <div className="flex flex-col items-center">
                   {getFileIcon()}
-                  <p className="mt-4 font-medium">{file.name}</p>
-                  <p className={`text-sm text-[${colors.secondaryText}]`}>
+                  <p className="mt-4 font-medium primary-text">{file.name}</p>
+                  <p className="text-sm secondary-text">
                     {(file.size / 1024 / 1024).toFixed(2)} MB
                   </p>
                   <button
@@ -137,7 +125,7 @@ export default function UploadPage() {
                       e.stopPropagation();
                       handleRemoveFile();
                     }}
-                    className={`mt-4 text-[${colors.accentPrimary}] hover:text-[${colors.accentAlternative}] flex items-center`}
+                    className="mt-4 text-accent hover:text-accent-light flex items-center"
                   >
                     <X size={16} className="mr-1" />
                     Remove file
@@ -145,16 +133,16 @@ export default function UploadPage() {
                 </div>
               ) : (
                 <>
-                  <Upload size={48} className={`mx-auto text-[${colors.secondaryText}] mb-4`} />
-                  <p className="font-medium">Click to upload a document</p>
-                  <p className={`text-sm text-[${colors.secondaryText}]`}>PDF or Word documents only</p>
+                  <Upload size={48} className="mx-auto text-accent mb-4" />
+                  <p className="font-medium primary-text">Click to upload a document</p>
+                  <p className="text-sm secondary-text">PDF or Word documents only</p>
                 </>
               )}
             </div>
             
             {/* Title Input */}
             <div className="mb-6">
-              <label htmlFor="title" className="block mb-2 font-medium">
+              <label htmlFor="title" className="block mb-2 font-medium primary-text">
                 Document Title
               </label>
               <input
@@ -162,7 +150,7 @@ export default function UploadPage() {
                 id="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className={`w-full p-3 rounded-lg bg-[${colors.mainBackground}] border border-[${colors.secondaryBackground}] focus:border-[${colors.accentPrimary}] focus:outline-none`}
+                className="w-full p-3 rounded-lg bg-primary border border-primary focus:border-accent focus:outline-none"
                 placeholder="e.g., Calculus 101 Study Notes"
                 required
               />
@@ -170,7 +158,7 @@ export default function UploadPage() {
             
             {/* Description Input */}
             <div className="mb-8">
-              <label htmlFor="description" className="block mb-2 font-medium">
+              <label htmlFor="description" className="block mb-2 font-medium primary-text">
                 Description
               </label>
               <textarea
@@ -178,7 +166,7 @@ export default function UploadPage() {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 rows={4}
-                className={`w-full p-3 rounded-lg bg-[${colors.mainBackground}] border border-[${colors.secondaryBackground}] focus:border-[${colors.accentPrimary}] focus:outline-none`}
+                className="w-full p-3 rounded-lg bg-primary border border-primary focus:border-accent focus:outline-none"
                 placeholder="Describe what this document contains and how it might help others..."
               />
             </div>
@@ -189,8 +177,8 @@ export default function UploadPage() {
               disabled={!file || !title || isUploading}
               className={`w-full py-3 px-6 rounded-md font-semibold transition-all duration-300 ease-in-out
                 ${(!file || !title || isUploading) 
-                  ? `bg-gray-600 cursor-not-allowed` 
-                  : `bg-[${colors.accentPrimary}] hover:bg-[${colors.accentAlternative}]`}
+                  ? 'bg-gray-600 cursor-not-allowed' 
+                  : 'bg-btn hover:bg-btn'}
               `}
             >
               {isUploading ? (
@@ -209,23 +197,23 @@ export default function UploadPage() {
         </div>
         
         {/* Guidelines Section */}
-        <div className={`mt-12 bg-[${colors.secondaryBackground}] rounded-xl shadow-lg p-6 md:p-8`}>
-          <h2 className="text-xl font-bold mb-4">Upload Guidelines</h2>
-          <ul className={`space-y-2 text-[${colors.secondaryText}]`}>
+        <div className="mt-12 card-bg rounded-xl shadow-lg p-6 md:p-8 border border-primary">
+          <h2 className="text-xl font-bold primary-text mb-4">Upload Guidelines</h2>
+          <ul className="space-y-2 secondary-text">
             <li className="flex items-start">
-              <div className={`h-2 w-2 rounded-full bg-[${colors.accentPrimary}] mt-2 mr-3`}></div>
+              <div className="h-2 w-2 rounded-full bg-accent mt-2 mr-3"></div>
               <span>Only upload materials you created or have permission to share</span>
             </li>
             <li className="flex items-start">
-              <div className={`h-2 w-2 rounded-full bg-[${colors.accentPrimary}] mt-2 mr-3`}></div>
+              <div className="h-2 w-2 rounded-full bg-accent mt-2 mr-3"></div>
               <span>Ensure your documents are clear and well-organized</span>
             </li>
             <li className="flex items-start">
-              <div className={`h-2 w-2 rounded-full bg-[${colors.accentPrimary}] mt-2 mr-3`}></div>
+              <div className="h-2 w-2 rounded-full bg-accent mt-2 mr-3"></div>
               <span>Provide accurate titles and descriptions to help others find your content</span>
             </li>
             <li className="flex items-start">
-              <div className={`h-2 w-2 rounded-full bg-[${colors.accentPrimary}] mt-2 mr-3`}></div>
+              <div className="h-2 w-2 rounded-full bg-accent mt-2 mr-3"></div>
               <span>Accepted formats: PDF, DOC, and DOCX</span>
             </li>
           </ul>
